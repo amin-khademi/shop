@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:nike_shop_project/data/Models/product.dart';
-import 'package:nike_shop_project/data/data/product_repository.dart';
+import 'package:nike_shop_project/data/repo/banner_repository.dart';
+import 'package:nike_shop_project/data/repo/product_repository.dart';
 import 'package:nike_shop_project/theme.dart';
-import 'package:dio/dio.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    productRepository.getAll(ProductSort.lastest).then((value) {
+    bannerRepository.getAll().then((value) {
       debugPrint(value.toString());
-    }).catchError((e) {
-      debugPrint(e.toString());
+    }).catchError((onError) {
+      debugPrint(onError.toString());
     });
     const defaultTextStyle = TextStyle(fontFamily: "IranYekan");
     return MaterialApp(

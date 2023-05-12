@@ -1,11 +1,8 @@
-import 'dart:ffi';
-
 import 'package:dio/dio.dart';
 import 'package:nike_shop_project/data/Models/product.dart';
-import 'package:nike_shop_project/data/repo/product_data_source.dart';
+import 'package:nike_shop_project/data/data/product_data_source.dart';
 
-final httpclient =
-    Dio(BaseOptions(baseUrl: "http://expertdevelopers.ir/api/v1/"));
+import '../../common/http_client.dart';
 
 final productRepository = ProductRepository(ProductRemoteDataSoure(httpclient));
 

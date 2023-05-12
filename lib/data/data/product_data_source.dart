@@ -1,7 +1,5 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:nike_shop_project/common/Appeception.dart';
+import 'package:nike_shop_project/common/validator.dart';
 
 import '../Models/product.dart';
 
@@ -10,7 +8,9 @@ abstract class IProductDataSouce {
   Future<List<ProductEntity>> search(String searchTerm);
 }
 
-class ProductRemoteDataSoure implements IProductDataSouce {
+class ProductRemoteDataSoure
+    with HttpResponseValidator
+    implements IProductDataSouce {
   final Dio httpClient;
 
   ProductRemoteDataSoure(this.httpClient);
@@ -34,11 +34,5 @@ class ProductRemoteDataSoure implements IProductDataSouce {
       products.add(ProductEntity.fromJson(element));
     });
     return products;
-  }
-
-  validator(Response response) {
-    if (response.statusCode != 200) {
-      throw AppException();
-    }
   }
 }
