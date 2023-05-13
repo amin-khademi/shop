@@ -1,8 +1,7 @@
-import 'package:dio/dio.dart';
+import 'package:nike_shop_project/common/http_client.dart';
 import 'package:nike_shop_project/data/Models/product.dart';
-import 'package:nike_shop_project/data/data/product_data_source.dart';
 
-import '../../common/http_client.dart';
+import '../data/product_data_source.dart';
 
 final productRepository = ProductRepository(ProductRemoteDataSoure(httpclient));
 

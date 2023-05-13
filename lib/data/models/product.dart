@@ -1,7 +1,5 @@
-import 'dart:convert';
-
 class ProductSort {
-  static const lastest = 0;
+  static const latest = 0;
   static const popular = 1;
   static const priceHighToLow = 2;
   static const priceLowToHigh = 3;
