@@ -33,11 +33,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         textTheme: TextTheme(
-          titleMedium: defaultTextStyle,
+          titleMedium: defaultTextStyle.copyWith(
+            fontSize: 14,
+            color: LightThemeColor.secondaryTextColor,
+          ),
           labelLarge:
               defaultTextStyle.apply(color: LightThemeColor.secondaryTextColor),
           bodyMedium: defaultTextStyle,
-          titleLarge: defaultTextStyle.copyWith(fontWeight: FontWeight.bold),
+          titleLarge: defaultTextStyle.copyWith(
+              fontWeight: FontWeight.bold, fontSize: 15),
           bodySmall:
               defaultTextStyle.apply(color: LightThemeColor.secondaryTextColor),
         ),

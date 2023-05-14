@@ -1,6 +1,6 @@
 import 'package:nike_shop_project/common/http_client.dart';
 import 'package:nike_shop_project/data/data/banner_data_source.dart';
-import 'package:nike_shop_project/data/models/banner.dart';
+import 'package:nike_shop_project/data/Models/banner.dart';
 import 'package:nike_shop_project/data/repo/product_repository.dart';
 
 final bannerRepository = BannerRepository(BannerRemoteDataSource(httpclient));
