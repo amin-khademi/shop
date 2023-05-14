@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nike_shop_project/common/utils.dart';
@@ -8,66 +6,30 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'cache_image.dart';
 
-class BannerSlider extends StatefulWidget {
+class BannerSlider extends StatelessWidget {
+  final PageController pageController = PageController();
   final List<BannerEntity> banners;
   BannerSlider({super.key, required this.banners});
 
   @override
-  State<BannerSlider> createState() => _BannerSliderState();
-}
-
-class _BannerSliderState extends State<BannerSlider> {
-  final PageController pageController = PageController();
-
-  @override
   Widget build(BuildContext context) {
-    int _currentPage = 0;
-    Timer _timer;
-    PageController _pageController = PageController(
-      initialPage: 0,
-    );
-
-    @override
-    void initState() {
-      super.initState();
-      _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
-        if (_currentPage < 2) {
-          _currentPage++;
-        } else {
-          _currentPage = 0;
-        }
-
-        _pageController.animateToPage(
-          _currentPage,
-          duration: Duration(milliseconds: 350),
-          curve: Curves.easeIn,
-        );
-      });
-    }
-
-    @override
-    void dispose() {
-      super.dispose();
-    }
-
     return AspectRatio(
       aspectRatio: 2,
       child: Stack(
         children: [
           PageView.builder(
-              controller: _pageController,
-              itemCount: widget.banners.length,
+              controller: pageController,
+              itemCount: banners.length,
               physics: defaultScrollPhysics,
-              itemBuilder: (context, index) =>
-                  _slide(banner: widget.banners[index])),
+              itemBuilder: (context, index) => _slide(banner: banners[index])),
           Positioned(
             bottom: 8,
             left: 0,
             right: 0,
             child: Center(
               child: SmoothPageIndicator(
-                controller: _pageController,
-                count: widget.banners.length,
+                controller: pageController,
+                count: banners.length,
                 axisDirection: Axis.horizontal,
                 effect: ExpandingDotsEffect(
                     spacing: 4,
