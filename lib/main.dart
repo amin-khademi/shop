@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:nike_shop_project/data/repo/banner_repository.dart';
 import 'package:nike_shop_project/theme.dart';
-import 'package:nike_shop_project/ui/home/home.dart';
+import 'package:nike_shop_project/ui/root.dart';
 
 void main() {
   runApp(const MyApp());
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const RootScreen(),
     );
   }
 }

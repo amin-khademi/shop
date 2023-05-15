@@ -62,7 +62,9 @@ class HomeScreen extends StatelessWidget {
                             onTap: () {},
                           );
                         default:
-                          return Container();
+                          return Container(
+                            height: 0,
+                          );
                       }
                     });
               } else if (state is HomeLoading) {

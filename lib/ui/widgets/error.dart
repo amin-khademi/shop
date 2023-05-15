@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:nike_shop_project/common/exception.dart';
 
 class AppErrorWidget extends StatelessWidget {
