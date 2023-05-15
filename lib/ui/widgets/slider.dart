@@ -10,23 +10,25 @@ import 'cache_image.dart';
 
 class BannerSlider extends StatefulWidget {
   final List<BannerEntity> banners;
-  BannerSlider({super.key, required this.banners});
+  const BannerSlider({super.key, required this.banners});
 
   @override
   State<BannerSlider> createState() => _BannerSliderState();
 }
 
 class _BannerSliderState extends State<BannerSlider> {
+  //^ automatically the pageview changed
+
   int _currentPage = 0;
   Timer? _timer;
-  PageController _pageController = PageController(
+  final PageController _pageController = PageController(
     initialPage: 0,
   );
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 8), (Timer timer) {
+    _timer = Timer.periodic(const Duration(seconds: 8), (Timer timer) {
       if (_currentPage < 2) {
         _currentPage++;
       } else {
@@ -35,7 +37,7 @@ class _BannerSliderState extends State<BannerSlider> {
 
       _pageController.animateToPage(
         _currentPage,
-        duration: Duration(milliseconds: 350),
+        duration: const Duration(milliseconds: 350),
         curve: Curves.decelerate,
       );
     });
@@ -54,6 +56,7 @@ class _BannerSliderState extends State<BannerSlider> {
       child: Stack(
         children: [
           PageView.builder(
+              reverse: false,
               controller: _pageController,
               itemCount: widget.banners.length,
               physics: defaultScrollPhysics,

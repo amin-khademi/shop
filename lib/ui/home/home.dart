@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nike_shop_project/common/exception.dart';
 import 'package:nike_shop_project/common/utils.dart';
 import 'package:nike_shop_project/data/Models/product.dart';
 import 'package:nike_shop_project/data/repo/banner_repository.dart';
