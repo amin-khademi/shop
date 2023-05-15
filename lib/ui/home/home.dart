@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nike_shop_project/common/exception.dart';
 import 'package:nike_shop_project/common/utils.dart';
 import 'package:nike_shop_project/data/Models/product.dart';
 import 'package:nike_shop_project/data/repo/banner_repository.dart';
 import 'package:nike_shop_project/data/repo/product_repository.dart';
 import 'package:nike_shop_project/ui/home/bloc/home_bloc.dart';
 import 'package:nike_shop_project/ui/product/product.dart';
-import 'package:nike_shop_project/ui/widgets/cache_image.dart';
+import 'package:nike_shop_project/ui/widgets/error.dart';
 import 'package:nike_shop_project/ui/widgets/slider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -70,21 +70,11 @@ class HomeScreen extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               } else if (state is HomeError) {
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(state.exception.msg),
-                      ElevatedButton(
-                          onPressed: () {
-                            BlocProvider.of<HomeBloc>(context)
-                                .add(HomeRefresh());
-                          },
-                          child: const Text("تلاش دوباره "))
-                    ],
-                  ),
-                );
+                return AppErrorWidget(
+                    exception: state.exception,
+                    onPressed: () {
+                      BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
+                    });
               } else {
                 throw Exception("state is not supported ");
               }
