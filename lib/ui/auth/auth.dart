@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:nike_shop_project/data/repo/auth_repository.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -19,7 +18,8 @@ class _AuthScreenState extends State<AuthScreen> {
       data: themeData.copyWith(
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all(Size.fromHeight(56)),
+                  minimumSize:
+                      MaterialStateProperty.all(const Size.fromHeight(56)),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12))),
                   backgroundColor: MaterialStateProperty.all(onbackground),
@@ -27,9 +27,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       Theme.of(context).colorScheme.secondary))),
           colorScheme: themeData.colorScheme.copyWith(onSurface: Colors.white),
           inputDecorationTheme: InputDecorationTheme(
-              labelStyle: TextStyle(color: Colors.white),
+              labelStyle: const TextStyle(color: Colors.white),
               border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: const BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.circular(12)))),
       child: Scaffold(
         backgroundColor: themeData.colorScheme.secondary,
@@ -44,44 +44,46 @@ class _AuthScreenState extends State<AuthScreen> {
                 width: 100,
                 color: Colors.white,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               Text(
                 isLogin ? "خوش آمدید" : "ثبت نام ",
-                style: TextStyle(fontSize: 22, color: onbackground),
+                style: const TextStyle(fontSize: 22, color: onbackground),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Text(
+              const Text(
                 "لطفا وارد حساب کاربری خود شوید",
                 style: TextStyle(color: onbackground, fontSize: 14),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 16,
-                child: TextField(
+                child: const TextField(
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(label: Text("آدرس ایمیل")),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              _PasswordTextField(onbackground: onbackground),
-              SizedBox(
+              const _PasswordTextField(onbackground: onbackground),
+              const SizedBox(
                 height: 16,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 20,
                 child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      authRepository.login("test@gmail.com", "123456");
+                    },
                     child: Text(isLogin ? "ورود" : "ثبت نام")),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Row(
@@ -92,7 +94,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     style: TextStyle(
                         color: onbackground.withOpacity(0.7), fontSize: 13),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   GestureDetector(
@@ -121,7 +123,6 @@ class _AuthScreenState extends State<AuthScreen> {
 
 class _PasswordTextField extends StatefulWidget {
   const _PasswordTextField({
-    super.key,
     required this.onbackground,
   });
 

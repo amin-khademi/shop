@@ -6,7 +6,7 @@ import 'package:nike_shop_project/ui/auth/auth.dart';
 import 'package:nike_shop_project/ui/root.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
