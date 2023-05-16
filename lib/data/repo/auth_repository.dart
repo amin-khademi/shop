@@ -8,6 +8,7 @@ final authRepository = AuthRepository(AuthRemoteDataSource(httpclient));
 
 abstract class IAuthRepository {
   Future<void> login(String username, String password);
+  Future<void> signUp(String username, String password);
 }
 
 class AuthRepository implements IAuthRepository {
@@ -17,5 +18,14 @@ class AuthRepository implements IAuthRepository {
   @override
   Future<void> login(String username, String password) async {
     final AuthInfo authInfo = await dataSource.login(username, password);
+  }
+
+  @override
+  Future<void> signUp(String username, String password) async {
+    try {
+      final AuthInfo authInfo = await dataSource.signUp(username, password);
+    } catch (e) {
+      e.toString();
+    }
   }
 }
