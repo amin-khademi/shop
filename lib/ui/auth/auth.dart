@@ -78,12 +78,10 @@ class _AuthScreenState extends State<AuthScreen> {
               SizedBox(
                 height: MediaQuery.of(context).size.height / 20,
                 child: ElevatedButton(
-                    onPressed: () {
-                      try {
-                        authRepository.login("tesrrt@gmail.com", "12fff3456");
-                      } catch (e) {
-                        debugPrint(e.toString());
-                      }
+                    onPressed: () async {
+                      await authRepository.login(
+                          "amin9898@gmail.com", "12345454556");
+                      authRepository.refreshToken();
                     },
                     child: Text(isLogin ? "ورود" : "ثبت نام")),
               ),
