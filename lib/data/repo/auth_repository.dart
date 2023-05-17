@@ -1,8 +1,10 @@
 import 'dart:ffi';
 
+import 'package:flutter/cupertino.dart';
 import 'package:nike_shop_project/common/http_client.dart';
 import 'package:nike_shop_project/data/Models/auth.dart';
 import 'package:nike_shop_project/data/data/auth_data_source.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final authRepository = AuthRepository(AuthRemoteDataSource(httpclient));
 
@@ -13,26 +15,54 @@ abstract class IAuthRepository {
 }
 
 class AuthRepository implements IAuthRepository {
+  static final ValueNotifier<AuthInfo?> authChangedNotifier =
+      ValueNotifier(null);
   final IAuthDataSource dataSource;
 
   AuthRepository(this.dataSource);
   @override
   Future<void> login(String username, String password) async {
     final AuthInfo authInfo = await dataSource.login(username, password);
+    _presistAuthToken(authInfo);
   }
 
   @override
   Future<void> signUp(String username, String password) async {
     try {
       final AuthInfo authInfo = await dataSource.signUp(username, password);
+      _presistAuthToken(authInfo);
     } catch (e) {
       e.toString();
     }
   }
 
   @override
-  Future<void> refreshToken() {
-    return dataSource.refreshToken(
-        "def50200bf2f65d07663e27fc50c800dc762322ebf16041735e4b2f1cca3b45950e9e1b1ca35fc5c175c90ac67ab3460a28eab3f6a5fa336ca41775300ffbaa0…");
+  Future<void> refreshToken() async {
+    if (authChangedNotifier.value != null) {
+      final AuthInfo authInfo = await dataSource
+          .refreshToken(authChangedNotifier.value!.refreshToken);
+      debugPrint("refresh token is:${authInfo.refreshToken} ");
+      _presistAuthToken(authInfo);
+    }
+  }
+
+  Future<void> _presistAuthToken(AuthInfo authInfo) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    sharedPreferences.setString("access_token", authInfo.accessToken);
+    sharedPreferences.setString("refresh_token", authInfo.refreshToken);
+    loadAuthInfo();
+  }
+
+  Future<void> loadAuthInfo() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    final String accessToken =
+        await sharedPreferences.getString("access_token") ?? "";
+    final String refreshToken =
+        sharedPreferences.getString("refresh_token") ?? "";
+    if (accessToken.isNotEmpty && refreshToken.isNotEmpty) {
+      authChangedNotifier.value = AuthInfo(accessToken, refreshToken);
+    }
   }
 }
