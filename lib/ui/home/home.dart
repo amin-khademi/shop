@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
               if (state is HomeSuccess) {
                 return ListView.builder(
                     physics: defaultScrollPhysics,
-                    itemCount: 5,
+                    itemCount: 6,
                     padding: const EdgeInsets.fromLTRB(12, 12, 12, 100),
                     itemBuilder: (context, index) {
                       switch (index) {
@@ -58,6 +58,18 @@ class HomeScreen extends StatelessWidget {
                           return _HorizontalProductList(
                             title: "پرفروش ترین",
                             products: state.popularProducts,
+                            onTap: () {},
+                          );
+                          case 4:
+                            return _HorizontalProductList(
+                            title: "اجناس پر بها",
+                            products: state.highToLowProducts,
+                            onTap: () {},
+                          );
+                          case 5:
+                            return _HorizontalProductList(
+                            title: "اجناس کم بها",
+                            products: state.lowToHighProducts,
                             onTap: () {},
                           );
                         default:

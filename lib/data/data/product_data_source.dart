@@ -3,26 +3,26 @@ import 'package:nike_shop_project/common/validator.dart';
 
 import '../Models/product.dart';
 
-abstract class IProductDataSouce {
+abstract class IProductDataSource {
   Future<List<ProductEntity>> getAll(int sort);
   Future<List<ProductEntity>> search(String searchTerm);
 }
 
-class ProductRemoteDataSoure
+class ProductRemoteDataSource
     with HttpResponseValidator
-    implements IProductDataSouce {
+    implements IProductDataSource {
   final Dio httpClient;
 
-  ProductRemoteDataSoure(this.httpClient);
+  ProductRemoteDataSource(this.httpClient);
   @override
   Future<List<ProductEntity>> getAll(int sort) async {
-    final response = await httpClient.get("product/list?$sort");
+    final response = await httpClient.get("product/list?sort=$sort");
     validator(response);
-    final products = <ProductEntity>[];
+    final product = <ProductEntity>[];
     (response.data as List).forEach((element) {
-      products.add(ProductEntity.fromJson(element));
+      product.add(ProductEntity.fromJson(element));
     }); //شامل اطلاعاتی است که از سرور یرای می اید
-    return products;
+    return product;
   }
 
   @override

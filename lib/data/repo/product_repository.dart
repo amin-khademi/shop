@@ -3,7 +3,8 @@ import 'package:nike_shop_project/data/Models/product.dart';
 
 import '../data/product_data_source.dart';
 
-final productRepository = ProductRepository(ProductRemoteDataSoure(httpclient));
+final productRepository =
+    ProductRepository(ProductRemoteDataSource(httpclient));
 
 abstract class IProductRepository {
   Future<List<ProductEntity>> getAll(int sort);
@@ -11,14 +12,14 @@ abstract class IProductRepository {
 }
 
 class ProductRepository implements IProductRepository {
-  final IProductDataSouce dataSouce;
+  final IProductDataSource dataSource;
 
-  ProductRepository(this.dataSouce);
+  ProductRepository(this.dataSource);
 
   @override
-  Future<List<ProductEntity>> getAll(int sort) => dataSouce.getAll(sort);
+  Future<List<ProductEntity>> getAll(int sort) => dataSource.getAll(sort);
 
   @override
   Future<List<ProductEntity>> search(String searchTerm) =>
-      dataSouce.search(searchTerm);
+      dataSource.search(searchTerm);
 }

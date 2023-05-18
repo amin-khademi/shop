@@ -22,9 +22,13 @@ class HomeSuccess extends HomeState {
   final List<BannerEntity> banners;
   final List<ProductEntity> latestProducts;
   final List<ProductEntity> popularProducts;
+  final List<ProductEntity> highToLowProducts;
+  final List<ProductEntity> lowToHighProducts;
+  
 
-  const HomeSuccess(
+  const HomeSuccess( 
       {required this.banners,
       required this.latestProducts,
-      required this.popularProducts});
+      required this.popularProducts,
+      required this.highToLowProducts,required this.lowToHighProducts,});
 }

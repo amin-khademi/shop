@@ -3,12 +3,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:nike_shop_project/data/repo/banner_repository.dart';
 import 'package:nike_shop_project/theme.dart';
 import 'package:nike_shop_project/ui/auth/auth.dart';
+import 'package:nike_shop_project/ui/root.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences.getInstance();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const AuthScreen(),
+      home: const RootScreen(),
     );
   }
 }
