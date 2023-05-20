@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences.getInstance();
-  runApp(MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {

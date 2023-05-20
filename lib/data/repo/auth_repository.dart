@@ -12,6 +12,7 @@ abstract class IAuthRepository {
   Future<void> login(String username, String password);
   Future<void> signUp(String username, String password);
   Future<void> refreshToken();
+  Future<void> signOut();
 }
 
 class AuthRepository implements IAuthRepository {
@@ -28,12 +29,10 @@ class AuthRepository implements IAuthRepository {
 
   @override
   Future<void> signUp(String username, String password) async {
-    try {
+    
       final AuthInfo authInfo = await dataSource.signUp(username, password);
       _presistAuthToken(authInfo);
-    } catch (e) {
-      e.toString();
-    }
+    
   }
 
   @override
@@ -64,5 +63,13 @@ class AuthRepository implements IAuthRepository {
     if (accessToken.isNotEmpty && refreshToken.isNotEmpty) {
       authChangedNotifier.value = AuthInfo(accessToken, refreshToken);
     }
+  }
+
+  @override
+  Future<void> signOut() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    sharedPreferences.clear();
+    authChangedNotifier.value = null;
   }
 }

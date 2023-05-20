@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nike_shop_project/common/utils.dart';
@@ -80,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                     });
               } else if (state is HomeLoading) {
                 return const Center(
-                  child: CircularProgressIndicator(),
+                  child: CupertinoActivityIndicator(),
                 );
               } else if (state is HomeError) {
                 return AppErrorWidget(
