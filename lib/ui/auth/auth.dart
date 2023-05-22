@@ -118,7 +118,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                     passWordController.text));
                           },
                           child: state is AuthLoading
-                              ? CupertinoActivityIndicator()
+                              ? const CupertinoActivityIndicator()
                               : Text(state.isLoginMode ? "ورود" : "ثبت نام")),
                     ),
                     const SizedBox(

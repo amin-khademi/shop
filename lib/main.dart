@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
       ],
       title: 'Flutter Demo',
       theme: ThemeData(
+        snackBarTheme: const SnackBarThemeData(contentTextStyle: defaultTextStyle),
         textTheme: TextTheme(
           titleMedium: defaultTextStyle.copyWith(
             fontSize: 14,
