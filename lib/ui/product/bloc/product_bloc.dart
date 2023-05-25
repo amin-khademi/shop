@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:nike_shop_project/common/exception.dart';
 import 'package:nike_shop_project/data/repo/cart_repository.dart';
-import 'package:nike_shop_project/data/repo/product_repository.dart';
 
 part 'product_event.dart';
 part 'product_state.dart';

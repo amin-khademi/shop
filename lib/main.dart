@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:nike_shop_project/data/repo/banner_repository.dart';
 import 'package:nike_shop_project/theme.dart';
-import 'package:nike_shop_project/ui/auth/auth.dart';
 import 'package:nike_shop_project/ui/root.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,7 +35,8 @@ class MyApp extends StatelessWidget {
       ],
       title: 'Flutter Demo',
       theme: ThemeData(
-        snackBarTheme: const SnackBarThemeData(contentTextStyle: defaultTextStyle),
+        snackBarTheme:
+            const SnackBarThemeData(contentTextStyle: defaultTextStyle),
         textTheme: TextTheme(
           titleMedium: defaultTextStyle.copyWith(
             fontSize: 14,

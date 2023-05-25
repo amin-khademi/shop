@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nike_shop_project/data/Models/comments.dart';
 import 'package:nike_shop_project/data/repo/comment_repository.dart';
 import 'package:nike_shop_project/ui/home/bloc/home_bloc.dart';
 import 'package:nike_shop_project/ui/product/comment.dart';

@@ -61,7 +61,7 @@ class _ProductsDetailState extends State<ProductsDetail> {
                         .add(CartAddButtonClicked(widget.product.id));
                   },
                   label: state is ProductAddToButtonLoading
-                      ? const CircularProgressIndicator()
+                      ? const CupertinoActivityIndicator()
                       : const Text("افزودن به سبد خرید")),
             ),
           ),

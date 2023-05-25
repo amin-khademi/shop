@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:nike_shop_project/common/exception.dart';
 import 'package:nike_shop_project/data/Models/comments.dart';
 import 'package:nike_shop_project/data/repo/comment_repository.dart';
-
 part 'comment_listbloc_event.dart';
 part 'comment_listbloc_state.dart';
 
