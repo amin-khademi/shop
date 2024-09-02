@@ -22,5 +22,5 @@ class AuthLoading extends AuthState {
 }
 
 class AuthSuccess extends AuthState {
-  AuthSuccess(super.isLoginMode);
+  const AuthSuccess(super.isLoginMode);
 }

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 class ImageLoadingService extends StatelessWidget {
   final String imageUrl;
-  final BorderRadius? borderRadius;
+  final  borderRadius;
   const ImageLoadingService({
     super.key,
     required this.imageUrl,

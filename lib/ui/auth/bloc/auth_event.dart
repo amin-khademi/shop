@@ -12,7 +12,7 @@ class AuthButtonClicked extends AuthEvent {
   final String username;
   final String password;
 
-  AuthButtonClicked(this.username, this.password);
+  const AuthButtonClicked(this.username, this.password);
 }
 
 class AuthModeChangeIsClicked extends AuthEvent {}

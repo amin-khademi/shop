@@ -6,6 +6,7 @@ import 'package:nike_shop_project/common/utils.dart';
 import 'package:nike_shop_project/data/Models/banner.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+
 import 'cache_image.dart';
 
 class BannerSlider extends StatefulWidget {
